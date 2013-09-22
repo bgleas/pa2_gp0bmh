@@ -12,6 +12,7 @@ CREATE TABLE Album
  created DATE,
  lastupdated DATE,
  username CHAR(20) REFERENCES User,
+ access CHAR(7),
  PRIMARY KEY(albumid));
 
 CREATE TABLE Photo
@@ -27,5 +28,13 @@ CREATE TABLE Contain
  caption CHAR(255),
  sequencenum INTEGER NOT NULL,
  PRIMARY KEY(albumid,picid));
+ 
+ CREATE TABLE AlbumAccess
+ (albumid INTEGER REFERENCES Album,
+  username CHAR(20) REFERENCES User,
+  PRIMARY KEY (albumid, username));
+  
+  
+  
  
   
