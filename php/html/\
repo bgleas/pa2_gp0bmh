@@ -1,0 +1,152 @@
+<?php
+
+   // Include the Smarty Templating Engine
+   define('SMARTY_DIR', __DIR__ . '/Smarty-3.1.14/libs/');
+   require_once(SMARTY_DIR . 'Smarty.class.php');
+   $smarty = new Smarty();
+
+   $smarty->setTemplateDir(__DIR__ . '/templates/templates/');
+   $smarty->setCompileDir(__DIR__ . '/templates/templates_c/');
+   $smarty->setConfigDir(__DIR__ . '/templates/configs/');
+   $smarty->setCacheDir(__DIR__ . '/templates/cache/');
+
+   // Notice how you can set variables here in the PHP that will get carried into the template files
+   $smarty->assign('title', "EECS485");
+
+   // Setup the Routing Framework
+   require_once __DIR__ . '/vendor/autoload.php';
+   $klein = new \Klein\Klein();
+
+
+   //Define MySQL Parameters
+
+   $host = "localhost";
+   $username = "group1";
+   $password = "Groupone";
+   $dbname = "group1";
+
+/*   $con = mysqli_connect($host, $username, $password, $dbname);
+
+   if (mysqli_connect_errno($con))
+   {
+        echo "Failed to connec to MySQL: ", mysqli_connect_error();
+   }
+*/
+
+
+
+
+   /* Define routes here */
+//Index Template Code////////////////////////////////////////////////////////////////////////////
+   $klein->respond('GET', '/', function ($request, $response, $service) use ($smarty) {    
+
+   global $host, $username, $password, $dbname;
+   
+   //Connects to MySQL Server//
+   $con = mysqli_connect($host, $username, $password, $dbname);
+
+   if (mysqli_connect_errno($con))
+   {
+        echo "Failed to connec to MySQL: ", mysqli_connect_error();
+   }
+
+   $sql = "SELECT username from User";
+   $results = mysqli_query($con, $sql);
+
+   $name_count = 0;
+
+   while($rows = mysqli_fetch_array($results))
+   {
+        $name_count++;
+        $name = $rows['username'];
+        $url = "/albums?username=".$name;
+        $varname = "name" . $name_count;
+        $varurl = "url" . $name_count;
+        $smarty->assign($varname, $name);
+        $smarty->assign($varurl, $url);
+   }//end while
+
+   $smarty->display('index.tpl');
+   mysqli_close($con);//Close MySQL Connection
+   });//end klein
+//End Index Template Code/////////////////////////////////////////////////////////////////////////
+
+
+//Picture Template Code//////////////////////////////////////////////////////////////////////////
+   $klein->respond('GET', '/pic[:id]?', function ($request, $response, $service) use ($smarty) {
+
+     // Notice how you can set variables here in the PHP that will get carried into the template files
+     $smarty->assign('picid', $request->id);
+
+     $smarty->display('pic.tpl');
+   });//end klein
+//End Picture Template Code//////////////////////////////////////////////////////////////////////
+
+
+//Album Template Code///////////////////////////////////////////////////////////////////////////
+   $klein->respond('GET', '/album', function ($request, $response, $service) use ($smarty) {
+
+//     $smarty->assign('albumid', $request->id);
+
+     $smarty->display('album.tpl');
+   });//end klein
+//End Album Template Code//////////////////////////////////////////////////////////////////////
+
+
+//Albums Template Code////////////////////////////////////////////////////////////////////////
+   $klein->respond('GET', '/albums[:username]?', function ($request, $response, $service) use ($smarty) {
+
+   global $host, $username, $password, $dbname;
+
+   //Connects to MySQL Server//
+   $con = mysqli_connect($host, $username, $password, $dbname);
+
+   if (mysqli_connect_errno($con))
+   {
+        echo "Failed to connec to MySQL: ", mysqli_connect_error();
+   }
+
+     $user = $_GET["username"];
+//	echo $user;
+
+
+     $sql = "SELECT title from Album where username = '". $user . "'";
+     echo $sql;
+     $album_results = mysqli_query($con, $sql);
+     $num = mysqli_num_rows($album_results);
+
+     echo $num;
+   echo "\n\n";
+
+     echo mysql_result($album_results,1,"title");
+	echo "\n\n";
+     for ($i = 0; $i < $num; ++$i)
+     {
+//	$album_names[$i] = mysql_result($results, $i, "title");
+	echo $i;
+	echo "\n\n";
+//	echo $album_names[$i];
+     }
+
+   /*while($rows = mysqli_fetch_array($album_results))
+   {
+  //      echo "Hello\n";
+//	echo $rows;
+	$output = $rows['title'];
+	echo $output;
+   }**/
+
+
+
+     $smarty->assign('rows', $num);
+     $smarty->assign('albums', $results);
+
+     $smarty->assign('name',  $user);
+     $smarty->display('albums.tpl');
+   });//end klein
+//End Albums Template Code///////////////////////////////////////////////////////////////////////
+
+   mysqli_close($con);
+
+   $klein->dispatch();
+?>

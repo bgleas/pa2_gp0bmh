@@ -1,0 +1,24 @@
+[Mon Sep 16 18:34:26.491504 2013] [auth_digest:notice] [pid 16325] AH01757: generating secret for digest authentication ...
+[Mon Sep 16 18:34:26.492861 2013] [lbmethod_heartbeat:notice] [pid 16325] AH02282: No slotmem from mod_heartmonitor
+[Mon Sep 16 18:34:26.542033 2013] [mpm_prefork:notice] [pid 16325] AH00163: Apache/2.4.6 (Fedora) PHP/5.5.3 configured -- resuming normal operations
+[Mon Sep 16 18:34:26.542113 2013] [core:notice] [pid 16325] AH00094: Command line: 'httpd -f /home/group1/admin/php/conf/httpd.conf'
+[Mon Sep 16 20:01:32.151923 2013] [mpm_prefork:notice] [pid 16325] AH00169: caught SIGTERM, shutting down
+[Mon Sep 16 20:02:17.254880 2013] [auth_digest:notice] [pid 17224] AH01757: generating secret for digest authentication ...
+[Mon Sep 16 20:02:17.256263 2013] [lbmethod_heartbeat:notice] [pid 17224] AH02282: No slotmem from mod_heartmonitor
+[Mon Sep 16 20:02:17.305278 2013] [mpm_prefork:notice] [pid 17224] AH00163: Apache/2.4.6 (Fedora) PHP/5.5.3 configured -- resuming normal operations
+[Mon Sep 16 20:02:17.305362 2013] [core:notice] [pid 17224] AH00094: Command line: 'httpd -f /home/group1/admin/php/conf/httpd.conf'
+[Mon Sep 16 20:03:11.792370 2013] [mpm_prefork:notice] [pid 17224] AH00169: caught SIGTERM, shutting down
+[Mon Sep 16 20:03:14.743567 2013] [auth_digest:notice] [pid 17235] AH01757: generating secret for digest authentication ...
+[Mon Sep 16 20:03:14.744909 2013] [lbmethod_heartbeat:notice] [pid 17235] AH02282: No slotmem from mod_heartmonitor
+[Mon Sep 16 20:03:14.793906 2013] [mpm_prefork:notice] [pid 17235] AH00163: Apache/2.4.6 (Fedora) PHP/5.5.3 configured -- resuming normal operations
+[Mon Sep 16 20:03:14.793978 2013] [core:notice] [pid 17235] AH00094: Command line: 'httpd -f /home/group1/admin/php/conf/httpd.conf'
+[Mon Sep 16 20:03:24.450692 2013] [mpm_prefork:notice] [pid 17235] AH00169: caught SIGTERM, shutting down
+[Tue Sep 17 18:27:04.887263 2013] [auth_digest:notice] [pid 1455] AH01757: generating secret for digest authentication ...
+[Tue Sep 17 18:27:04.888622 2013] [lbmethod_heartbeat:notice] [pid 1455] AH02282: No slotmem from mod_heartmonitor
+[Tue Sep 17 18:27:05.112126 2013] [mpm_prefork:notice] [pid 1455] AH00163: Apache/2.4.6 (Fedora) PHP/5.5.3 configured -- resuming normal operations
+[Tue Sep 17 18:27:05.112220 2013] [core:notice] [pid 1455] AH00094: Command line: 'httpd -f /home/group1/admin/php/conf/httpd.conf'
+[Wed Sep 18 12:24:01.244965 2013] [mpm_prefork:notice] [pid 1455] AH00169: caught SIGTERM, shutting down
+[Wed Sep 18 13:38:14.017341 2013] [auth_digest:notice] [pid 14480] AH01757: generating secret for digest authentication ...
+[Wed Sep 18 13:38:14.018730 2013] [lbmethod_heartbeat:notice] [pid 14480] AH02282: No slotmem from mod_heartmonitor
+[Wed Sep 18 13:38:14.067368 2013] [mpm_prefork:notice] [pid 14480] AH00163: Apache/2.4.6 (Fedora) PHP/5.5.3 configured -- resuming normal operations
+[Wed Sep 18 13:38:14.067444 2013] [core:notice] [pid 14480] AH00094: Command line: 'httpd -f /home/group1/admin/php/conf/httpd.conf'
