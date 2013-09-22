@@ -1,18 +1,18 @@
 INSERT INTO User (username, firstname, lastname, password, email)
-VALUES ('sportslover', 'Paul', 'Walker', 'password', 'sportslover@hotmail.com');
+VALUES ('sportslover', 'Paul', 'Walker', 'paulpass93', 'sportslover@hotmail.com');
 INSERT INTO User (username, firstname, lastname, password, email)
-VALUES ('traveler', 'Rebecca', 'Travolta', 'password', 'rebt@explorer.org');
+VALUES ('traveler', 'Rebecca', 'Travolta', 'rebeccapass15', 'rebt@explorer.org');
 INSERT INTO User (username, firstname, lastname, password, email)
-VALUES ('spacejunkie', 'Bob', 'Spacey', 'password', 'bspace@spacejunkies.net');
+VALUES ('spacejunkie', 'Bob', 'Spacey', 'bob1pass', 'bspace@spacejunkies.net');
 
+INSERT INTO Album (albumid, title, created, lastupdated, username, access)
+VALUES (1, 'I love sports', '2012-01-05', '2013-09-17', 'sportslover', 'public');
 INSERT INTO Album (albumid, title, created, lastupdated, username)
-VALUES (1, 'I love sports', '2012-01-05', '2013-09-17', 'sportslover');
+VALUES (2, 'I love football', '2012-01-05', '2013-09-17', 'sportslover', 'public');
 INSERT INTO Album (albumid, title, created, lastupdated, username)
-VALUES (2, 'I love football', '2012-01-05', '2013-09-17', 'sportslover');
+VALUES (3, 'Around The World', '2012-01-05', '2013-09-17', 'traveler', 'public');
 INSERT INTO Album (albumid, title, created, lastupdated, username)
-VALUES (3, 'Around The World', '2012-01-05', '2013-09-17', 'traveler');
-INSERT INTO Album (albumid, title, created, lastupdated, username)
-VALUES (4, 'Cool Space Shots', '2012-01-05', '2013-09-17', 'spacejunkie');
+VALUES (4, 'Cool Space Shots', '2012-01-05', '2013-09-17', 'spacejunkie', 'private');
 
 INSERT INTO Photo (picid, url, format, date)
 VALUES (1, '/photos/football_s1.jpg', 'jpg', '2012-01-05');
@@ -138,3 +138,8 @@ INSERT INTO Contain (albumid, picid, caption, sequencenum)
 VALUES (3, 29, 'picture 12', 12);
 INSERT INTO Contain (albumid, picid, caption, sequencenum)
 VALUES (3, 30, 'picture 13', 13);
+
+INSERT INTO AlbumAccess(albumid, username)
+VALUES (4, 'traveler');
+INSERT INTO AlbumAccess(albumid, username)
+VALUES (4, 'spacejunkie');
